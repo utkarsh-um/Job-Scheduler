@@ -1,8 +1,9 @@
 # Job-Scheduler
 Data Structures &amp; Algorithms Course, IIT Delhi
 # Problem Statement : 
-http://www.cse.iitd.ernet.in/~kumarsandeep/ta/col106/assignment4/main.html
-http://web.iitd.ac.in/~anz188059/Assignment5.html
+Part 1: https://drive.google.com/file/d/1isR2QyLtPSyhbJnxVsdQIO4I-zQikKdZ/view?usp=sharing
+Part 2: https://drive.google.com/file/d/1n46W59G2WYRjzpHH5ARBDe8I15FmHPQR/view?usp=sharing
+
 
 # Report for my implementation :
 timed_top_consumer(): From the users trie an ArrayList which contains all the inserted objects is extracted and sorted through ArrayList.sort() by overriding compareTo . Time Complexity is O(nlogn) n is number of users
