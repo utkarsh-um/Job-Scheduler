@@ -5,23 +5,15 @@ http://www.cse.iitd.ernet.in/~kumarsandeep/ta/col106/assignment4/main.html
 http://web.iitd.ac.in/~anz188059/Assignment5.html
 
 # Report for my implementation :
-timed_top_consumer(): From the users trie an ArrayList which contains all the inserted objects is extracted and sorted through ArrayList.sort()
-					  by overriding compareTo .
-					  Time Complexity is O(nlogn) n is number of users
+timed_top_consumer(): From the users trie an ArrayList which contains all the inserted objects is extracted and sorted through ArrayList.sort() by overriding compareTo . Time Complexity is O(nlogn) n is number of users
 
-timed_flush(): 		  All jobs in heap are extracted and stored in another heap if waittime is less than required or the budget is less otherwise job
-					  is executed.
-					  Worst Case Time Complexity is O(nlogn) n is number of jobs in heap.
+timed_flush():  All jobs in heap are extracted and stored in another heap if waittime is less than required or the budget is less otherwise job is executed. Worst Case Time Complexity is O(nlogn) n is number of jobs in heap.
 
-handle_new_priority():From a previously mantained ArrayList allunfinished(which stores all the allunfinished jobs) all those jobs which have priority 						  greater than the input are stored a returned in a list.
-					  Time Complexity is O(total number of unfinished jobs)
+handle_new_priority():From a previously mantained ArrayList allunfinished(which stores all the allunfinished jobs) all those jobs which have priority greater than the input are stored a returned in a list. Time Complexity is O(total number of unfinished jobs)
 
-handle new_user():	  From the users trie the user with given name is extracted and all the jobs of the user are iterated through and required jobs are 					  inserted in the returned list.
-					  Time Complexity is O(user_name_length+number of jobs of the user)
-handle new_project(): From the projects trie the user with given name is extracted and all the jobs of the project are iterated through and required 						  jobs are inserted in the returned list.
-					  Time Complexity is O(project_name_length+number of jobs of the project)
-handle_new_projectuser():From the users trie the user with given name is extracted and all the jobs of the user are iterated through and required jobs are 					    inserted in the returned list which have the same project.
-							Time Complexity is O(user_name_length+project_name_length+number of jobs of the user)
+handle new_user(): From the users trie the user with given name is extracted and all the jobs of the user are iterated through and required jobs are inserted in the returned list. Time Complexity is O(user_name_length+number of jobs of the user)
+handle new_project(): From the projects trie the user with given name is extracted and all the jobs of the project are iterated through and required jobs are inserted in the returned list. Time Complexity is O(project_name_length+number of jobs of the project)
+handle_new_projectuser():From the users trie the user with given name is extracted and all the jobs of the user are iterated through and required jobs are inserted in the returned list which have the same project. Time Complexity is O(user_name_length+project_name_length+number of jobs of the user)
 
 all other timed functions are the counterparts of their untimed functions and only difference is they are without the print statements.
 
@@ -30,7 +22,7 @@ The provided test cases work on my code.
 NOTE :  I am not printing priority and id in print_stats as it is not necessary as per the instructions.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-				README Of Assignment4
+				README Of Assignment4 (Implementation of Trie, RedBlack Tree, Heap)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 TrieNode:
 Attributes: value(stores the object),level(stores the level),data(stores the character),endofword(marks whether a word ends here or not),alpha[](array of 128 characters)
@@ -39,18 +31,13 @@ NOTE:As according to previous assignment details characters were in the range 0-
 
 
 Trie:
-insert(): Traversed down the string and added the characters already not present in the trie and marked the last character as endofword. If it was already endofword implies word was already in the trie.
-		Time Complexity is O(max_string_length);
-search(): Traversed down the string. If all characters are found and last is endofword then true else false; 
-		  Time Complexity: O(max_string_length);
-startswith()/printTrie: Implemented by traversing down to the all endofwords by recursion. And printing the value stored their
-		Worst Time Complexity:O(no.of_nodes*128) (same as dfs)
+insert(): Traversed down the string and added the characters already not present in the trie and marked the last character as endofword. If it was already endofword implies word was already in the trie. Time Complexity is O(max_string_length);
+search(): Traversed down the string. If all characters are found and last is endofword then true else false;  Time Complexity: O(max_string_length);
+startswith()/printTrie: Implemented by traversing down to the all endofwords by recursion. And printing the value stored their.	Worst Time Complexity:O(no.of_nodes*128) (same as dfs)
 
-print,printlevel: implemented using bfs for print bfs is done on all levels and for printlevel bfs is done till the given level;
-						Time Complexity =O(no. of nodes*128)(same as bfs)
+print,printlevel: implemented using bfs for print bfs is done on all levels and for printlevel bfs is done till the given level; Time Complexity =O(no. of nodes*128)(same as bfs)
 
-delete():Found the maximum element from below for which all the elements belows does not have more than 1 children and further removing all these refrences and als removing endofword mark.
-		Time Complexity:O(string_length*128) By checking all the corresponding children of all the characters of string.
+delete():Found the maximum element from below for which all the elements belows does not have more than 1 children and further removing all these refrences and als removing endofword mark.Time Complexity:O(string_length*128) By checking all the corresponding children of all the characters of string.
 
 
 MaxHeap:
@@ -59,13 +46,8 @@ So a new Node which is pair <T,int> is made which stores the original object as 
 MaxHeap implemented using ArrayList
 Parent=(child-1)/2
 child=2*Pareent+1||2
-Insert: By inserting at the last position in arraylist and then bubbling up by comparing with parent.
-		T(n)=T((n-1)/2)+O(1) where T(n) is time required to move the element to required place from index n
-		T(1)=O(1)
-		hence time complexity is O(logn)
-ExtractMax: Firstly removed the topmost element of the arraylist and then moving the last element to that position and then bubbling down by comaring with children till all settles. 
-			Similar time complexity analysis as insert instead of going back in the array we are moving ahead in the array same steps.
-			SO timecomplexity O(logn)
+Insert: By inserting at the last position in arraylist and then bubbling up by comparing with parent. T(n)=T((n-1)/2)+O(1) where T(n) is time required to move the element to required place from index n. T(1)=O(1). hence time complexity is O(logn)
+ExtractMax: Firstly removed the topmost element of the arraylist and then moving the last element to that position and then bubbling down by comaring with children till all settles. Similar time complexity analysis as insert instead of going back in the array we are moving ahead in the array same steps. SO timecomplexity O(logn)
 Here maxheap property that every node is greater than its subtrees or its children is followed in accordance with modified priority hence maitaining FIFO for same priority as well.
 
 
@@ -107,18 +89,14 @@ handle_empty_line: runs schedule() once Worst case Time complexity O(n)
 run_to_completion:runs schedule till heap is empty : Time Complexity is O(n) that is till heap is empty.
 (n is no. of jobs)
 
-handle_query: It is done by searching in the alljobs RedBlackTree if found then check its status and print accordingly else Not Found
-			Because RBTree search worst case time complexity is O(logn)  n is no. of jobs(all jobs)
+handle_query: It is done by searching in the alljobs RedBlackTree if found then check its status and print accordingly else Not Found Because RBTree search worst case time complexity is O(logn)  n is no. of jobs(all jobs)
 
 handle_user/hande_project/handle_job : Trivial, added into respective data structures.
 
-printstats: Trivially handled by printing from respective data structures.
-		For unfinished jobs printing order is Priority then FIFO
+printstats: Trivially handled by printing from respective data structures. For unfinished jobs printing order is Priority then FIFO
 
 
-handle_add: When a budget is added all the jobs from the jobs_heap is removed and stored in arraylist.
-			And then from the unfinished jobs arraylist all jobs of this project is added to heap(jobs_heap) and then those stored in the arraylist in the above step is moved back to heap. Hence maintaning FIFO for same priority
-			Worst Case Time complexity is O(nlogn).
+handle_add: When a budget is added all the jobs from the jobs_heap is removed and stored in arraylist. And then from the unfinished jobs arraylist all jobs of this project is added to heap(jobs_heap) and then those stored in the arraylist in the above step is moved back to heap. Hence maintaning FIFO for same priority Worst Case Time complexity is O(nlogn).
 
 
 All other classes like Student, Person are trivial.
